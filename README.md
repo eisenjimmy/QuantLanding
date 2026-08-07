@@ -1,4 +1,4 @@
-# Quantfox Landing
+# Quantactic Landing
 
 Static marketing + legal site for App Store Connect.
 
@@ -14,8 +14,8 @@ Static marketing + legal site for App Store Connect.
 
 ## Pricing (U.S. reference)
 
-- Quantfox Pro Monthly: **$4.99**
-- Quantfox Pro Annually: **$39.99**
+- Quantactic Pro Monthly: **$4.99**
+- Quantactic Pro Annually: **$39.99**
 
 ## Rebuild after content edits
 
