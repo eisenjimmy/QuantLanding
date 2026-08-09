@@ -18,6 +18,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
 a.link { color: #ffc267; }
@@ -113,6 +114,7 @@ a.link:hover { text-decoration: underline; }
   gap: 56px;
   align-items: center;
   padding: 84px 0 70px;
+  overflow: clip;
 }
 .eyebrow {
   display: flex;
@@ -184,7 +186,7 @@ h1 em { font-style: normal; color: var(--orange); }
   border-bottom: 1px solid var(--line);
   background: #0d0f13;
 }
-.strip-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.strip-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
 .metric { padding: 22px 20px; border-left: 1px solid var(--line); }
 .metric:first-child { border-left: 0; }
 .metric b { display: block; color: var(--ink); font-size: 18px; }
@@ -200,7 +202,7 @@ h1 em { font-style: normal; color: var(--orange); }
 .section-heading p { margin: 0; color: var(--muted); font-size: 17px; }
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 .feature {
@@ -222,6 +224,32 @@ h1 em { font-style: normal; color: var(--orange); }
 }
 .feature h3 { margin: 0 0 7px; color: var(--ink); font-size: 16px; }
 .feature p { margin: 0; color: var(--muted); font-size: 14px; }
+.story {
+  display: grid;
+  grid-template-columns: 1fr minmax(250px, 0.78fr);
+  gap: 44px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+.story:nth-of-type(even) { grid-template-columns: minmax(250px, 0.78fr) 1fr; }
+.story:nth-of-type(even) .story-copy { order: 2; }
+.story img {
+  display: block;
+  width: min(100%, 330px);
+  max-height: 560px;
+  object-fit: cover;
+  object-position: top center;
+  margin: auto;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+}
+.story-copy { max-width: 610px; }
+.story-copy h2 { margin-bottom: 12px; }
+.story-copy > p { margin: 0 0 15px; color: var(--muted); font-size: 17px; }
+.points { margin: 0; padding-left: 20px; color: var(--text); }
+.points li { margin: 7px 0; }
+.proof-note { color: var(--orange) !important; font-weight: 650; }
 .shots {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -262,6 +290,20 @@ h1 em { font-style: normal; color: var(--orange); }
 }
 .pro h2 { font-size: 28px; margin: 0 0 8px; color: var(--ink); }
 .pro p { max-width: 620px; margin: 0; color: var(--text); }
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 23px;
+}
+.benefit {
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.14);
+}
+.benefit h3 { margin: 0 0 5px; color: var(--ink); font-size: 14px; }
+.benefit p { margin: 0; color: var(--muted); font-size: 13px; }
 .price-block { text-align: right; }
 .price {
   color: var(--ink);
@@ -277,6 +319,12 @@ h1 em { font-style: normal; color: var(--orange); }
   font-weight: 500;
   letter-spacing: 0;
 }
+.price b { display: block; margin-bottom: 4px; color: var(--text); font-size: 12px; letter-spacing: 0; }
+.price strong { display: block; color: var(--ink); font-size: 29px; }
+.price strong span { display: inline; margin-left: 4px; font-size: 13px; }
+.price small { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; font-weight: 500; line-height: 1.45; }
+.price.annual { padding: 15px; border: 1px solid rgba(255, 171, 46, 0.4); border-radius: 13px; background: rgba(255, 171, 46, 0.09); }
+.price.monthly { margin-top: 13px; padding: 0 15px 3px; }
 .price + .price { margin-top: 12px; }
 .notice {
   max-width: 830px;
@@ -384,7 +432,12 @@ article.legal a:hover { text-decoration: underline; }
   .metric:first-child { border-top: 0; }
   .section { padding: 62px 0; }
   .feature-grid,
-  .shots { grid-template-columns: 1fr; }
+  .shots,
+  .benefit-grid { grid-template-columns: 1fr; }
+  .story,
+  .story:nth-of-type(even) { grid-template-columns: 1fr; gap: 30px; }
+  .story:nth-of-type(even) .story-copy { order: initial; }
+  .story img { width: min(100%, 270px); max-height: 420px; }
   .pro { grid-template-columns: 1fr; }
   .price-block { text-align: left; }
   .section h2 { font-size: 29px; }

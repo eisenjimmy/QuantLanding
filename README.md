@@ -1,26 +1,32 @@
 # Quantactic Landing
 
-Static marketing + legal site for App Store Connect.
+Static marketing + legal site for Quantactic and App Store Connect.
 
-## URLs (GitHub Pages style)
+Product: **Quantactic — market intelligence that shows its work.**
 
-| Language | Product | Privacy | Terms |
-|---|---|---|---|
-| English (default ASC) | `/` or `/en/` | `/privacy.html` or `/en/privacy.html` | `/terms.html` or `/en/terms.html` |
-| Spanish | `/es/` | `/es/privacy.html` | `/es/terms.html` |
-| Japanese | `/ja/` | `/ja/privacy.html` | `/ja/terms.html` |
-| Korean | `/ko/` | `/ko/privacy.html` | `/ko/terms.html` |
-| Simplified Chinese | `/zh-Hans/` | `/zh-Hans/privacy.html` | `/zh-Hans/terms.html` |
+Locales:
+- English
+- Korean
+- Japanese
+- Simplified Chinese
+- Spanish
 
-## Pricing (U.S. reference)
+U.S. subscription reference:
+- Quantactic Pro Monthly — **$4.99/month**
+- Quantactic Pro Annual — **$39.99/year** (about 33% savings)
 
-- Quantactic Pro Monthly: **$4.99**
-- Quantactic Pro Annually: **$39.99**
+The content dictionaries in `scripts/build_site.py` are the source of truth.
 
-## Rebuild after content edits
+## Build
 
 ```bash
 python3 scripts/build_site.py
 ```
 
-Edit `scripts/build_site.py` `CONTENT` dict, then regenerate.
+## Verify
+
+```bash
+python3 scripts/verify_site.py
+```
+
+The root English aliases `/`, `/privacy.html`, and `/terms.html` remain stable for App Store Connect and GitHub Pages.
