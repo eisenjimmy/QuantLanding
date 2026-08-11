@@ -30,3 +30,6 @@ python3 scripts/verify_site.py
 ```
 
 The root English aliases `/`, `/privacy.html`, and `/terms.html` remain stable for App Store Connect and GitHub Pages.
+
+The root `/app-ads.txt` contains Quantactic's authorized AdMob seller record and
+must remain available as plain text on the developer-site hostname.

@@ -13,6 +13,7 @@ LANGS = {"en": "en", "es": "es", "ja": "ja", "ko": "ko", "zh-Hans": "zh-Hans"}
 APP_STORE_URL = "https://apps.apple.com/app/id6795746505"
 OLD_BRAND = "Quant" + "fox"
 FORBIDDEN_COPY = ("SAVE 0%", "SAVE 50%", "See the market.", "Test the range.", "Decide with context.", "experimental sampled")
+APP_ADS_RECORD = "google.com, pub-6317048078552057, DIRECT, f08c47fec0942fa0"
 
 
 class PageParser(HTMLParser):
@@ -110,14 +111,23 @@ def check_text() -> None:
             fail(f"placeholder content in {path.relative_to(ROOT)}")
 
 
+def check_app_ads() -> None:
+    path = ROOT / "app-ads.txt"
+    if not path.is_file():
+        fail("missing root app-ads.txt")
+    if read(path).strip() != APP_ADS_RECORD:
+        fail("app-ads.txt does not exactly match the authorized AdMob seller record")
+
+
 def main() -> int:
     try:
         check_pages()
         check_text()
+        check_app_ads()
     except RuntimeError as error:
         print(f"verify_site: FAIL: {error}", file=sys.stderr)
         return 1
-    print("verify_site: PASS — pages, locales, assets, App Store URL, pricing, and brand checks passed")
+    print("verify_site: PASS — pages, locales, assets, app-ads.txt, App Store URL, pricing, and brand checks passed")
     return 0
 
 
