@@ -17,6 +17,7 @@ BASE_URL = "https://quantactic.app"
 APP_STORE_URL = "https://apps.apple.com/app/id6795746505"
 SUPPORT_EMAIL = "xjimmypark@gmail.com"
 SITE_UPDATED = "2026-08-20"
+STYLESHEET_FILENAME = "site-1.3-20260820.css"
 
 LANGS = [
     {"code": "en", "html_lang": "en", "label": "English", "short": "EN"},
@@ -356,7 +357,7 @@ def head(c: dict, title: str, description: str, in_locale_folder: bool, page: st
   <meta name="twitter:description" content="{escape(description, quote=True)}">
   <meta name="twitter:image" content="{social_image}">
   <script type="application/ld+json">{structured_data}</script>
-  <link rel="stylesheet" href="{p}css/site.css">
+  <link rel="stylesheet" href="{p}css/{STYLESHEET_FILENAME}">
 </head>
 <body>'''
 
@@ -523,6 +524,7 @@ def write(path: Path, text: str) -> None:
 
 
 def main() -> None:
+    write(ROOT / "css" / STYLESHEET_FILENAME, (ROOT / "css" / "site.css").read_text(encoding="utf-8"))
     for lang in LANGS:
         code = lang["code"]
         write(ROOT / code / "index.html", index_page(code, True))

@@ -19,6 +19,7 @@ LANGS = {"en": "en", "es": "es", "ja": "ja", "ko": "ko", "zh-Hans": "zh-Hans"}
 APP_STORE_URL = "https://apps.apple.com/app/id6795746505"
 APP_ADS_RECORD = "google.com, pub-6317048078552057, DIRECT, f08c47fec0942fa0"
 CURRENT_APP_ICON_SHA256 = "b953883a3cd7716324eacaa4bd400d4abb4389e47fdf1e3045ff9c85dac8b653"
+STYLESHEET_FILENAME = "site-1.3-20260820.css"
 SCREENSHOTS = (
     "01-private-ai.png",
     "02-forecast.png",
@@ -47,6 +48,7 @@ class PageParser(HTMLParser):
         self.alternates: dict[str, str] = {}
         self.images: list[tuple[str, str]] = []
         self.links: list[str] = []
+        self.stylesheets: list[str] = []
         self.meta: dict[tuple[str, str], str] = {}
         self.json_ld: list[str] = []
         self._in_title = False
@@ -72,6 +74,8 @@ class PageParser(HTMLParser):
                 self.description = values.get("content", "")
         elif tag == "link":
             rel = values.get("rel", "").split()
+            if "stylesheet" in rel:
+                self.stylesheets.append(values.get("href", ""))
             if "canonical" in rel:
                 self.canonical = values.get("href", "")
             if "alternate" in rel and values.get("hreflang"):
@@ -149,6 +153,9 @@ def check_pages() -> None:
             fail(f"{relative}: incorrect x-default URL")
         if "privacy.html" not in parser.links or "terms.html" not in parser.links:
             fail(f"{relative}: missing local Privacy / Terms navigation")
+        expected_stylesheet = f"../css/{STYLESHEET_FILENAME}" if len(relative.parts) > 1 else f"css/{STYLESHEET_FILENAME}"
+        if parser.stylesheets != [expected_stylesheet]:
+            fail(f"{relative}: stylesheet is not release-fingerprinted")
         for required in (
             ("name", "robots"),
             ("property", "og:title"),
@@ -213,6 +220,10 @@ def check_assets() -> None:
     with Image.open(dither) as image:
         if image.mode != "RGBA":
             fail("dither background must retain a transparent alpha channel")
+    source_css = ROOT / "css/site.css"
+    fingerprinted_css = ROOT / "css" / STYLESHEET_FILENAME
+    if not fingerprinted_css.is_file() or fingerprinted_css.read_bytes() != source_css.read_bytes():
+        fail("fingerprinted stylesheet is missing or differs from css/site.css")
     for code in LANGS:
         for filename in SCREENSHOTS:
             path = ROOT / "assets/campaign" / code / filename
