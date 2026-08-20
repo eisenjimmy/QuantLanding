@@ -15,7 +15,7 @@ U.S. subscription reference:
 - Quantactic Pro Monthly — **$4.99/month**
 - Quantactic Pro Annual — **$39.99/year** (about 33% savings)
 
-The content dictionaries in `scripts/build_site.py` are the source of truth.
+The content dictionaries in `scripts/build_site.py` are the source of truth. The generated site includes canonical and hreflang metadata, Open Graph and Twitter cards, `SoftwareApplication` and `FAQPage` JSON-LD, a sitemap, robots rules, a web manifest, and an experimental `llms.txt` discovery summary.
 
 ## Build
 
@@ -29,7 +29,4 @@ python3 scripts/build_site.py
 python3 scripts/verify_site.py
 ```
 
-The root English aliases `/`, `/privacy.html`, and `/terms.html` remain stable for App Store Connect and GitHub Pages.
-
-The root `/app-ads.txt` contains Quantactic's authorized AdMob seller record and
-must remain available as plain text on the developer-site hostname.
+The root English aliases `/`, `/privacy.html`, and `/terms.html` remain stable for App Store Connect and GitHub Pages. The `/en/` pages canonicalize to those root URLs; the other four locale folders use self-canonical URLs.

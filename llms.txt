@@ -1,0 +1,27 @@
+# Quantactic
+
+> Quantactic is an evidence-first iPhone market-research app with on-device Apple Intelligence explanations, probabilistic forecasts, explainable signals, model accountability, macro context, advanced charts, and Share Studio.
+
+Quantactic does not execute trades, connect to brokerage accounts, accept deposits, manage investments, or provide personalized investment advice. Forecasts are probabilistic scenarios, not price targets or guarantees. Market data may be delayed.
+
+Current app version: 1.3. Requires iOS 26 or later. Supported website and app languages: English, Spanish, Japanese, Korean, and Simplified Chinese.
+
+Free users receive one 7-day forecast per local day. An additional 7-day run is available only after the user explicitly chooses one rewarded ad; ads do not appear during page navigation. Quantactic Pro provides unlimited 7-day forecasts and complete 30- and 90-day scenarios.
+
+## Primary pages
+
+- [Quantactic product page](https://quantactic.app/): Features, screenshots, pricing, limitations, and App Store link.
+- [Privacy policy](https://quantactic.app/privacy.html): Local storage, network services, advertising, purchases, AI, notifications, sharing, and deletion.
+- [Terms of use](https://quantactic.app/terms.html): Informational scope, subscriptions, forecasts, signals, and limitations.
+- [App Store listing](https://apps.apple.com/app/id6795746505): Official iPhone download.
+
+## Localized product pages
+
+- [Español](https://quantactic.app/es/)
+- [日本語](https://quantactic.app/ja/)
+- [한국어](https://quantactic.app/ko/)
+- [简体中文](https://quantactic.app/zh-Hans/)
+
+## Contact
+
+- Support and privacy: xjimmypark@gmail.com

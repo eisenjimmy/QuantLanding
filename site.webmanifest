@@ -1,0 +1,26 @@
+{
+  "name": "Quantactic",
+  "short_name": "Quantactic",
+  "description": "Private on-device market intelligence for iPhone with explainable stock signals, probabilistic forecasts, model track records, macro context, charts, and shareable research cards.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f7faff",
+  "theme_color": "#0a55ff",
+  "icons": [
+    {
+      "src": "/assets/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/quant-app-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
